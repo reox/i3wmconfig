@@ -151,11 +151,21 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# rename workspaces
+bindsym $mod+Shift+a exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
         status_command i3status
 }
+
+
+# multimonitor things
+
+# this will cycle through all outputs
+bindsym $mod+o focus output right
+
 
 # enable specific modes for some windows
 for_window [instance="^(arandr|wicd-client.py)$"] floating enable
