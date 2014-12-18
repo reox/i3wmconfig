@@ -34,6 +34,7 @@ bindsym $mod+ctrl+l exec xautolock -locknow
 
 # kill focused window
 # use the same as awesome does... some legacy needed
+bindsym $mod+Shift+q kill
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
@@ -118,7 +119,7 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+t reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -158,6 +159,8 @@ bar {
 
 # enable specific modes for some windows
 for_window [instance="^(arandr|wicd-client.py)$"] floating enable
+for_window [class="^Pidgin$"] move container to workspace 4
+for_window [title="^Minecraft .*$"] move container to workspace 5, floating enable
 
 
 # start up things
