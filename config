@@ -150,6 +150,10 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# switch to next/previous workspace
+bindsym XF86Back workspace prev
+bindsym XF86Forward workspace next
+
 # rename workspaces
 bindsym $mod+Shift+a exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 
