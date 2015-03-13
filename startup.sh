@@ -22,3 +22,6 @@ setxkbmap us altgr-intl -option ctrl:nocaps
 wmname LG3D &
 wicd-gtk --tray &
 pidgin &
+
+xsetroot -solid "#111111"
+# feh --bg-scale ~/.i3/wallpaper/eye.jpg &
