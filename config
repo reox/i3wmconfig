@@ -178,19 +178,30 @@ bar {
 # this will cycle through all outputs
 bindsym $mod+o focus output right
 
-
 # enable specific modes for some windows
-for_window [instance="^(Battle.net.exe|keepassx|keepass2|arandr|wicd-client.py)$"] floating enable
+for_window [instance="^(keepassx|arandr|wicd-client.py)$"] floating enable
 for_window [title="^alsamixer$"] floating enable
 for_window [class="^Pidgin$"] move container to workspace 4
 for_window [class="^XTerm floating$"] floating enable 
 
+# gimp
+# from https://bbs.archlinux.org/viewtopic.php?pid=1037908#p1037908
+assign [class="Gimp"] gimp
+bindsym $mod+g workspace gimp
+for_window [title="GIMP Startup"] move workspace gimp
+for_window [window_role="gimp-toolbox"] floating disable; layout stacking; move left; resize shrink right 31px or 31 ppt
+
+# pdf-presenter-console, auto move the presentation to the right output (considering that we start it on the main output)
+for_window [window_role="presentation" class="pdf-presenter-console"] move container to output right
 
 # start up things
 exec_always --no-startup-id /home/reox/.i3/startup.sh
 
+# start wicd-gtk only one time
+exec wicd-gtk --tray
+# start some things on a specific workspace
 exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 1'
-exec --no-startup-id i3-msg 'workspace 3; exec xterm -e mutt; workspace 1'
+exec --no-startup-id i3-msg 'workspace 3; exec xterm -e mutt; workspace 3'
 
 # set background color
 exec --no-startup-id xsetroot -solid "#333333"
