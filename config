@@ -8,7 +8,7 @@ set $mod Mod4
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Droid Sans Mono 8
+font pango:Hack 8
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -26,7 +26,7 @@ bindsym $mod+Shift+Return exec xterm -class "XTerm floating"
 # start a file manager
 bindsym $mod+p exec pcmanfm
 # start alsamixer
-bindsym $mod+m exec xterm -e alsamixer
+bindsym $mod+m exec urxvt -e alsamixer
 
 # lock the screen
 bindsym $mod+ctrl+l exec xautolock -locknow
@@ -204,7 +204,7 @@ exec_always --no-startup-id /home/reox/.i3/startup.sh
 exec nm-applet 
 # start some things on a specific workspace
 exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 1'
-exec --no-startup-id i3-msg 'workspace 3; exec xterm -e mutt; workspace 3'
+exec --no-startup-id i3-msg 'workspace 3; exec urxvt -e mutt; workspace 1'
 
 # set background color
 exec --no-startup-id xsetroot -solid "#333333"
