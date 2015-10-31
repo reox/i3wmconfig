@@ -10,6 +10,8 @@ setxkbmap us altgr-intl -option ctrl:nocaps
 
 # run a few things on startup
 wmname LG3D &
+pidgin &
 
 xsetroot -solid "#111111"
-# feh --bg-scale ~/.i3/wallpaper/eye.jpg &
+feh --bg-scale ~/.i3/wallpaper/pinguin.jpg &
+gpg-agent --daemon --write-env-file "${HOME}/.gpg-agent-info"
