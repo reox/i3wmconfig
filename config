@@ -168,6 +168,7 @@ bar {
     tray_output primary 
     font pango:DejaVu Sans Mono 10
     strip_workspace_numbers yes
+    separator_symbol "  |  "
 }
 
 bar {
@@ -196,12 +197,7 @@ assign [class="Gimp"] gimp
 bindsym $mod+g workspace gimp
 for_window [title="GIMP Startup"] move workspace gimp
 for_window [window_role="gimp-toolbox"] floating disable; layout stacking; move left; resize shrink right 31px or 31 ppt
-
-# pdf-presenter-console, auto move the presentation to the right output (considering that we start it on the main output)
-for_window [window_role="presentation" class="(?i)pdf-presenter-console"] move container to output right
-# always move the presenter screen to the Laptop Display. This has to be done, otherwise _both_ windows are moved to the other output...
-for_window [window_role="presenter" class="(?i)pdf-presenter-console"] move container to output LVDS1
-
+#
 # start up things
 exec_always --no-startup-id /home/reox/.i3/startup.sh
 
