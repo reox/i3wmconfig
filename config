@@ -165,12 +165,13 @@ bindsym $mod+Tab move workspace to output right
 bar {
     status_command i3status
     output DP-0
-    tray_output DP-0
+    tray_output primary 
 }
 
 bar {
     output HDMI-0
     status_command i3status --config ~/.i3/i3status_short.conf
+    tray_output none 
 }
 
 # multimonitor things
@@ -202,6 +203,7 @@ exec_always --no-startup-id /home/reox/.i3/startup.sh
 
 # start wicd-gtk only one time
 exec nm-applet 
+exec cinnamon-sound-applet
 # start some things on a specific workspace
 exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 1'
 exec --no-startup-id i3-msg 'workspace 3; exec icedove; workspace 1'
