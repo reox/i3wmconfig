@@ -20,7 +20,7 @@ font pango:Droid Sans Mono 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec uxterm 
 bindsym $mod+Shift+Return exec xterm -class "XTerm floating" 
 
 # start a file manager
@@ -164,12 +164,12 @@ bindsym $mod+Tab move workspace to output right
 # finds out, if available)
 bar {
     status_command i3status
-    output LVDS1
-    tray_output LVDS1
+    output DP-0
+    tray_output DP-0
 }
 
 bar {
-    output VGA1
+    output HDMI-0
     status_command i3status --config ~/.i3/i3status_short.conf
 }
 
@@ -190,7 +190,7 @@ for_window [class="^XTerm floating$"] floating enable
 exec_always --no-startup-id /home/reox/.i3/startup.sh
 
 exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 1'
-exec --no-startup-id i3-msg 'workspace 3; exec xterm -e mutt; workspace 1'
+exec --no-startup-id i3-msg 'workspace 3; exec icedove; workspace 1'
 
 # set background color
 exec --no-startup-id xsetroot -solid "#333333"
