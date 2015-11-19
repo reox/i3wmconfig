@@ -30,6 +30,7 @@ bindsym $mod+m exec urxvt -e alsamixer
 
 # lock the screen
 bindsym $mod+ctrl+l exec xautolock -locknow
+bindcode 156 exec xautolock -locknow
 
 # kill focused window
 # use the same as awesome does... some legacy needed
@@ -202,6 +203,7 @@ exec_always --no-startup-id /home/reox/.i3/startup.sh
 
 # start wicd-gtk only one time
 exec nm-applet 
+exec volti
 # start some things on a specific workspace
 exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 1'
 exec --no-startup-id i3-msg 'workspace 3; exec urxvt -e mutt; workspace 1'
