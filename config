@@ -28,6 +28,9 @@ bindsym $mod+p exec pcmanfm
 # start alsamixer
 bindsym $mod+m exec urxvt -e alsamixer
 
+# start arandr
+bindsym $mod+n exec arandr
+
 # lock the screen
 bindsym $mod+ctrl+l exec xautolock -locknow
 bindcode 156 exec xautolock -locknow
@@ -181,6 +184,7 @@ bindsym $mod+o focus output right
 
 # enable specific modes for some windows
 for_window [instance="^(keepassx|arandr|wicd-client.py)$"] floating enable
+for_window [instance="^arandr"] resize set 640 480
 for_window [title="^alsamixer$"] floating enable
 for_window [class="^Pidgin$"] move container to workspace 4
 for_window [class="^XTerm floating$"] floating enable 
