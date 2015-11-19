@@ -31,6 +31,12 @@ bindsym $mod+m exec urxvt -e alsamixer
 # start arandr
 bindsym $mod+n exec arandr
 
+# Scratchpad  from http://christian.amsuess.com/blog/config/changed_to_i3wm/
+bindsym $mod+d [instance="^scratchpad$"] scratchpad show
+exec_always flock -w1 ~/.i3/scratchpad/lockfile ~/.i3/scratchpad/perpetual_terminal.sh
+for_window [instance="^scratchpad$"] move scratchpad
+for_window [instance="^scratchpad$"] resize set 640 200
+
 # lock the screen
 bindsym $mod+ctrl+l exec xautolock -locknow
 bindcode 156 exec xautolock -locknow
@@ -41,7 +47,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+# bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
