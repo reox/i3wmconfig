@@ -28,8 +28,18 @@ bindsym $mod+p exec pcmanfm
 # start alsamixer
 bindsym $mod+m exec urxvt -e alsamixer
 
+# start arandr
+bindsym $mod+n exec arandr
+
+# Scratchpad  from http://christian.amsuess.com/blog/config/changed_to_i3wm/
+bindsym $mod+d [instance="^scratchpad$"] scratchpad show
+exec_always flock -w1 ~/.i3/scratchpad/lockfile ~/.i3/scratchpad/perpetual_terminal.sh
+for_window [instance="^scratchpad$"] move scratchpad
+for_window [instance="^scratchpad$"] resize set 640 200
+
 # lock the screen
 bindsym $mod+ctrl+l exec xautolock -locknow
+bindcode 156 exec xautolock -locknow
 
 # kill focused window
 # use the same as awesome does... some legacy needed
@@ -37,7 +47,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+# bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -55,11 +65,8 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+XF86Back move left 
+bindsym $mod+Shift+XF86Forward move right 
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -151,8 +158,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # switch to next/previous workspace
-bindsym XF86Back workspace prev
-bindsym XF86Forward workspace next
+# bindsym XF86Back workspace prev
+# bindsym XF86Forward workspace next
 
 # rename workspaces
 bindsym $mod+Shift+a exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
@@ -186,6 +193,7 @@ bindsym $mod+o focus output right
 
 # enable specific modes for some windows
 for_window [instance="^(keepassx|arandr|wicd-client.py)$"] floating enable
+for_window [instance="^arandr"] resize set 640 480
 for_window [title="^alsamixer$"] floating enable
 for_window [class="^Pidgin$"] move container to workspace 4
 for_window [class="^XTerm floating$"] floating enable 
@@ -203,7 +211,7 @@ exec_always --no-startup-id /home/reox/.i3/startup.sh
 
 # start wicd-gtk only one time
 exec nm-applet 
-exec cinnamon-sound-applet
+exec volti
 # start some things on a specific workspace
 exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 1'
 exec --no-startup-id i3-msg 'workspace 3; exec icedove; workspace 1'
