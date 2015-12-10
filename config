@@ -171,9 +171,9 @@ bindsym $mod+Tab move workspace to output right
 # finds out, if available)
 bar {
     status_command i3status
-    output DP-0
     tray_output primary 
-    font pango:DejaVu Sans Mono 10
+    output DVI-I-1
+    font pango:DejaVu Sans Mono 12
     strip_workspace_numbers yes
     separator_symbol "  |  "
 }
@@ -199,6 +199,9 @@ for_window [class="^Pidgin$"] move container to workspace 4
 for_window [class="^XTerm floating$"] floating enable 
 for_window [title="^Minecraft.*$"] floating enable 
 
+# Restore Layouts, must be done before the application starts
+exec --no-startup-id "i3-msg 'workspace 4; append_layout /home/reox/.i3/layouts/workspace-4.json'"
+
 # gimp
 # from https://bbs.archlinux.org/viewtopic.php?pid=1037908#p1037908
 assign [class="Gimp"] gimp
@@ -208,6 +211,7 @@ for_window [window_role="gimp-toolbox"] floating disable; layout stacking; move 
 #
 # start up things
 exec_always --no-startup-id /home/reox/.i3/startup.sh
+
 
 # start wicd-gtk only one time
 exec nm-applet 
