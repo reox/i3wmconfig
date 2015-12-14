@@ -112,6 +112,9 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
+bindsym $mod+F1 workspace darktable
+bindsym $mod+F2 workspace gimp
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
@@ -207,6 +210,7 @@ exec --no-startup-id "i3-msg 'workspace 4; append_layout /home/reox/.i3/layouts/
 assign [class="Gimp"] gimp
 bindsym $mod+g workspace gimp
 for_window [title="GIMP Startup"] move workspace gimp
+for_window [class="^Darktable$"] move workspace darktable
 for_window [window_role="gimp-toolbox"] floating disable; layout stacking; move left; resize shrink right 31px or 31 ppt
 #
 # start up things
