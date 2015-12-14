@@ -114,6 +114,7 @@ bindsym $mod+0 workspace 10
 
 bindsym $mod+F1 workspace darktable
 bindsym $mod+F2 workspace gimp
+bindsym $mod+F3 workspace virtual
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -201,6 +202,7 @@ for_window [title="^alsamixer$"] floating enable
 for_window [class="^Pidgin$"] move container to workspace 4
 for_window [class="^XTerm floating$"] floating enable 
 for_window [title="^Minecraft.*$"] floating enable 
+for_window [class="^Icedove$" instance="^Msgcompose$"] floating enable
 
 # Restore Layouts, must be done before the application starts
 exec --no-startup-id "i3-msg 'workspace 4; append_layout /home/reox/.i3/layouts/workspace-4.json'"
@@ -211,6 +213,7 @@ assign [class="Gimp"] gimp
 bindsym $mod+g workspace gimp
 for_window [title="GIMP Startup"] move workspace gimp
 for_window [class="^Darktable$"] move workspace darktable
+for_window [class="^VirtualBox$" title="^.* - Oracle VM VirtualBox$"] move workspace virtual
 for_window [window_role="gimp-toolbox"] floating disable; layout stacking; move left; resize shrink right 31px or 31 ppt
 #
 # start up things
