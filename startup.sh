@@ -24,5 +24,5 @@ wmname LG3D &
 pidgin &
 
 xsetroot -solid "#111111"
-feh --bg-scale ~/.i3/wallpaper/pinguin.jpg &
+feh --bg-scale ~/.i3/wallpaper/copepod.jpg &
 gpg-agent --daemon --write-env-file "${HOME}/.gpg-agent-info"
