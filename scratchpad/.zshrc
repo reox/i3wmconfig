@@ -3,6 +3,8 @@ source ~/.zshrc
 # reset again what was set outside
 export ZDOTDIR=${HOME}
 
+HISTFILE=${HOME}/.zsh/scratchpad_history
+
 PS1="(SP)$PS1"
 
 preexec() {
