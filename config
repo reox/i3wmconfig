@@ -209,8 +209,7 @@ for_window [window_role="presenter" class="(?i)pdf-presenter-console"] move cont
 # start up things
 exec_always --no-startup-id /home/reox/.i3/startup.sh
 
-# start wicd-gtk only one time
-exec nm-applet 
+exec cmst --minimized 
 exec volti
 # start some things on a specific workspace
 exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 1'
