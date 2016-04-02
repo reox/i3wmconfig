@@ -34,8 +34,7 @@ bindsym $mod+n exec arandr
 # Scratchpad  from http://christian.amsuess.com/blog/config/changed_to_i3wm/
 bindsym $mod+d [instance="^scratchpad$"] scratchpad show
 exec_always flock -w1 ~/.i3/scratchpad/lockfile ~/.i3/scratchpad/perpetual_terminal.sh
-for_window [instance="^scratchpad$"] move scratchpad
-for_window [instance="^scratchpad$"] resize set 640 200
+for_window [instance="^scratchpad$"] move scratchpad, resize set 640 200, sticky enable
 
 # lock the screen
 bindsym $mod+ctrl+l exec xautolock -locknow
@@ -182,14 +181,6 @@ bar {
     separator_symbol "  |  "
 }
 
-bar {
-    output HDMI-0
-    status_command i3status --config ~/.i3/i3status_short.conf
-    tray_output none 
-    font pango:DejaVu Sans Mono 10
-    strip_workspace_numbers yes
-}
-
 # multimonitor things
 
 # this will cycle through all outputs
@@ -203,6 +194,7 @@ for_window [class="^Pidgin$"] move container to workspace 4
 for_window [class="^XTerm floating$"] floating enable 
 for_window [title="^Minecraft.*$"] floating enable 
 for_window [class="^Icedove$" instance="^Msgcompose$"] floating enable
+for_window [class="^PTBatcherGUI$"] floating enable
 
 # Restore Layouts, must be done before the application starts
 exec --no-startup-id "i3-msg 'workspace 4; append_layout /home/reox/.i3/layouts/workspace-4.json'"
@@ -213,8 +205,9 @@ assign [class="Gimp"] gimp
 bindsym $mod+g workspace gimp
 for_window [title="GIMP Startup"] move workspace gimp
 for_window [class="^Darktable$"] move workspace darktable
+for_window [class="^VirtualBox$" title="^Oracle VM VirtualBox Manager$"] floating enable
 for_window [class="^VirtualBox$" title="^.* - Oracle VM VirtualBox$"] move workspace virtual
-for_window [window_role="gimp-toolbox"] floating disable; layout stacking; move left; resize shrink right 31px or 31 ppt
+for_window [window_role="gimp-toolbox"] floating disable, layout stacking, move left, resize shrink right 31px or 31 ppt
 #
 # start up things
 exec_always --no-startup-id /home/reox/.i3/startup.sh
@@ -222,10 +215,10 @@ exec_always --no-startup-id /home/reox/.i3/startup.sh
 
 # start wicd-gtk only one time
 exec nm-applet 
-exec volti
 # start some things on a specific workspace
-exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 1'
-exec --no-startup-id i3-msg 'workspace 3; exec icedove; workspace 1'
+exec --no-startup-id i3-msg 'workspace 2, exec firefox, move workspace to output DP-1'
+exec --no-startup-id i3-msg 'workspace 3, exec icedove, move workspace to output DP-1'
 
 # set background color
 exec --no-startup-id xsetroot -solid "#333333"
+exec --no-startup-id nitrogen --restore
