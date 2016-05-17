@@ -38,8 +38,7 @@ for_window [instance="^scratchpad$"] move scratchpad
 for_window [instance="^scratchpad$"] resize set 640 200
 
 # lock the screen
-bindsym $mod+ctrl+l exec xautolock -locknow
-bindcode 156 exec xautolock -locknow
+bindcode 156 exec xautolock -locknow && sleep 1 && xautolock -enable && sleep 1 && xautolock -locknow
 
 # kill focused window
 # use the same as awesome does... some legacy needed
@@ -194,6 +193,7 @@ for_window [title="^alsamixer$"] floating enable
 for_window [class="^Pidgin$"] move container to workspace 4
 for_window [class="^XTerm floating$"] floating enable 
 for_window [title="^Minecraft.*$"] floating enable 
+for_window [class="^com-mathworks-util-PostVMInit$" title="^Figure.*$"] floating enable
 
 # gimp
 # from https://bbs.archlinux.org/viewtopic.php?pid=1037908#p1037908
