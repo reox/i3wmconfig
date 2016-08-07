@@ -172,12 +172,20 @@ bindsym $mod+Tab move workspace to output right
 # finds out, if available)
 bar {
     status_command i3status
-    output LVDS1
-    tray_output LVDS1
+    output LVDS-1
+    tray_output LVDS-1
 }
 
 bar {
-    output VGA1
+    status_command i3status --config ~/.i3/i3status_top.conf
+    output LVDS-1
+    position top
+    workspace_buttons no
+    tray_output none
+}
+
+bar {
+    output VGA-1
     status_command i3status --config ~/.i3/i3status_short.conf
 }
 
@@ -204,7 +212,7 @@ for_window [window_role="gimp-toolbox"] floating disable, layout stacking, move 
 # pdf-presenter-console, auto move the presentation to the right output (considering that we start it on the main output)
 for_window [window_role="presentation" class="(?i)pdf-presenter-console"] move container to output right
 # always move the presenter screen to the Laptop Display. This has to be done, otherwise _both_ windows are moved to the other output...
-for_window [window_role="presenter" class="(?i)pdf-presenter-console"] move container to output LVDS1
+for_window [window_role="presenter" class="(?i)pdf-presenter-console"] move container to output LVDS-1
 
 # start up things
 exec_always --no-startup-id /home/reox/.i3/startup.sh
