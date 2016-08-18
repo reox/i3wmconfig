@@ -175,6 +175,10 @@ bar {
     output LVDS-1
     tray_output LVDS-1
     separator_symbol " | "
+    colors {
+        background #444444
+        statusline #ffffff
+    }
 }
 
 bar {
@@ -184,6 +188,10 @@ bar {
     workspace_buttons no
     tray_output none
     separator_symbol " | "
+    colors {
+        background #444444
+        statusline #ffffff
+    }
 }
 
 bar {
