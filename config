@@ -199,6 +199,11 @@ bar {
     status_command i3status --config ~/.i3/i3status_short.conf
 }
 
+bar {
+    output DP-1
+    status_command i3status --config ~/.i3/i3status_short.conf
+}
+
 # multimonitor things
 
 # this will cycle through all outputs
@@ -208,7 +213,7 @@ bindsym $mod+o focus output right
 for_window [instance="^(keepassx|arandr|wicd-client.py)$"] floating enable
 for_window [instance="^arandr"] resize set 640 480
 for_window [title="^alsamixer$"] floating enable
-for_window [class="^Pidgin$"] move container to workspace 4
+for_window [class="^Psi$"] move container to workspace 4
 for_window [class="^XTerm floating$"] floating enable 
 for_window [title="^Minecraft.*$"] floating enable 
 for_window [class="^com-mathworks-util-PostVMInit$" title="^Figure.*$"] floating enable
@@ -230,6 +235,7 @@ exec_always --no-startup-id /home/reox/.i3/startup.sh
 exec cmst --minimized
 exec volti
 exec qtpass
+exec psi
 # start some things on a specific workspace
 exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 1'
 exec --no-startup-id i3-msg 'workspace 3; exec urxvt -e mutt; workspace 1'
