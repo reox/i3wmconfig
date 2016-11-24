@@ -20,7 +20,7 @@ font pango:Hack 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec uxterm 
+bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+Return exec xterm -class "XTerm floating" 
 
 # start a file manager
@@ -190,24 +190,25 @@ bindsym $mod+o focus output right
 for_window [instance="^(keepassx|arandr|wicd-client.py|pavucontrol)$"] floating enable
 for_window [instance="^arandr"] resize set 640 480
 for_window [title="^alsamixer$"] floating enable
-for_window [class="^Pidgin$"] move container to workspace 4
 for_window [class="^XTerm floating$"] floating enable 
 for_window [title="^Minecraft.*$"] floating enable 
 for_window [class="^Icedove$" instance="^Msgcompose$"] floating enable
 for_window [class="^PTBatcherGUI$"] floating enable
 
 # Restore Layouts, must be done before the application starts
-exec --no-startup-id "i3-msg 'workspace 4; append_layout /home/reox/.i3/layouts/workspace-4.json'"
+# exec --no-startup-id "i3-msg 'workspace 4; append_layout /home/reox/.i3/layouts/workspace-4.json'"
 
 # gimp
 # from https://bbs.archlinux.org/viewtopic.php?pid=1037908#p1037908
 assign [class="Gimp"] gimp
 bindsym $mod+g workspace gimp
 for_window [title="GIMP Startup"] move workspace gimp
+for_window [class="Psi"] move workspace 4
 for_window [class="^Darktable$"] move workspace darktable
 for_window [class="^VirtualBox$" title="^Oracle VM VirtualBox Manager$"] floating enable
 for_window [class="^VirtualBox$" title="^.* - Oracle VM VirtualBox$"] move workspace virtual
-for_window [window_role="gimp-toolbox"] floating disable, layout stacking, move left, resize shrink right 31px or 31 ppt
+# for_window [window_role="gimp-toolbox"] floating disable, layout stacking, move left, resize shrink right 31px or 31 ppt
+for_window [class="^com-mathworks-util-PostVMInit$" title="^Figure.*$"] floating enable
 #
 # start up things
 exec_always --no-startup-id /home/reox/.i3/startup.sh
@@ -215,6 +216,7 @@ exec_always --no-startup-id /home/reox/.i3/startup.sh
 
 # start wicd-gtk only one time
 exec nm-applet 
+exec psi-plus
 # start some things on a specific workspace
 exec --no-startup-id i3-msg 'workspace 2, exec firefox, move workspace to output DP-1'
 exec --no-startup-id i3-msg 'workspace 3, exec icedove, move workspace to output DP-1'
