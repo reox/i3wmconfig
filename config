@@ -99,6 +99,9 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+c focus child
 
+# Sticky
+bindsym $mod+y sticky toggle
+
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -209,13 +212,13 @@ for_window [class="^VirtualBox$" title="^Oracle VM VirtualBox Manager$"] floatin
 for_window [class="^VirtualBox$" title="^.* - Oracle VM VirtualBox$"] move workspace virtual
 # for_window [window_role="gimp-toolbox"] floating disable, layout stacking, move left, resize shrink right 31px or 31 ppt
 for_window [class="^com-mathworks-util-PostVMInit$" title="^Figure.*$"] floating enable
+for_window [class="^com-mathworks-activationclient-ActivationApplication$"] floating enable
 #
 # start up things
 exec_always --no-startup-id /home/reox/.i3/startup.sh
 
 
 # start wicd-gtk only one time
-exec nm-applet 
 exec psi-plus
 # start some things on a specific workspace
 exec --no-startup-id i3-msg 'workspace 2, exec firefox, move workspace to output DP-1'
