@@ -6,7 +6,7 @@ xset s off &
 xset -b & 
 
 # screenlocker
-xautolock -detectsleep -time 3 -locker "i3lock -d -c 000000" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'" &
+xautolock -detectsleep -time 3 -locker "i3lock -i ~/.i3/lockscreen.png -f" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'" &
 
 # mouse and trackball settings
 xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 8 1
