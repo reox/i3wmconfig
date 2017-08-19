@@ -177,8 +177,8 @@ bindsym $mod+Tab move workspace to output right
 # finds out, if available)
 bar {
     status_command i3status
-    tray_output primary 
-    output DP-1
+    tray_output DP-1
+# output DP-1
     font pango:DejaVu Sans Mono 12
     strip_workspace_numbers yes
     separator_symbol "  |  "
@@ -195,7 +195,6 @@ for_window [instance="^arandr"] resize set 640 480
 for_window [title="^alsamixer$"] floating enable
 for_window [class="^XTerm floating$"] floating enable 
 for_window [title="^Minecraft.*$"] floating enable 
-for_window [class="^Icedove$" instance="^Msgcompose$"] floating enable
 for_window [class="^PTBatcherGUI$"] floating enable
 
 # Restore Layouts, must be done before the application starts
@@ -213,6 +212,7 @@ for_window [class="^VirtualBox$" title="^.* - Oracle VM VirtualBox$"] move works
 # for_window [window_role="gimp-toolbox"] floating disable, layout stacking, move left, resize shrink right 31px or 31 ppt
 for_window [class="^com-mathworks-util-PostVMInit$" title="^Figure.*$"] floating enable
 for_window [class="^com-mathworks-activationclient-ActivationApplication$"] floating enable
+for_window [class="^Pcmanfm$"] floating enable
 #
 # start up things
 exec_always --no-startup-id /home/reox/.i3/startup.sh
@@ -222,7 +222,7 @@ exec_always --no-startup-id /home/reox/.i3/startup.sh
 exec psi-plus
 # start some things on a specific workspace
 exec --no-startup-id i3-msg 'workspace 2, exec firefox, move workspace to output DP-1'
-exec --no-startup-id i3-msg 'workspace 3, exec icedove, move workspace to output DP-1'
+exec --no-startup-id i3-msg 'workspace 3, exec urxvt -e mutt, move workspace to output DP-1'
 
 # set background color
 exec --no-startup-id xsetroot -solid "#333333"
