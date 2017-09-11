@@ -13,7 +13,7 @@ xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 8 1
 xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Button" 8 2
 xinput set-int-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Timeout" 8 200
 xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Axes" 6 7 4 5
-synclient TouchPadOff=1
+# synclient TouchPadOff=1
 
 # keyboard layout
 setxkbmap us altgr-intl -option ctrl:nocaps
@@ -22,5 +22,5 @@ setxkbmap us altgr-intl -option ctrl:nocaps
 wmname LG3D &
 
 xsetroot -solid "#111111"
-feh --bg-scale ~/.i3/wallpaper/copepod.jpg &
+nitrogen --restore &
 gpg-agent --daemon --write-env-file "${HOME}/.gpg-agent-info"
