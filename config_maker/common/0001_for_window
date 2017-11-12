@@ -1,0 +1,22 @@
+# enable specific modes for some windows
+for_window [instance="^(keepassx|arandr|wicd-client.py|pavucontrol)$"] floating enable
+for_window [instance="^arandr"] resize set 640 480
+for_window [title="^alsamixer$"] floating enable
+for_window [class="^XTerm floating$"] floating enable
+for_window [title="^Minecraft.*$"] floating enable
+for_window [class="^PTBatcherGUI$"] floating enable
+#
+# gimp: from https://bbs.archlinux.org/viewtopic.php?pid=1037908#p1037908
+assign [class="Gimp"] gimp
+for_window [title="GIMP Startup"] move workspace gimp
+# FIXME this creates huge problems!
+# for_window [window_role="gimp-toolbox"] floating disable, layout stacking, move left, resize shrink right 31px or 31 ppt
+
+for_window [class="Psi"] move workspace 4
+for_window [class="^Darktable$"] move workspace darktable
+for_window [class="^VirtualBox$" title="^Oracle VM VirtualBox Manager$"] floating enable
+for_window [class="^VirtualBox$" title="^.* - Oracle VM VirtualBox$"] move workspace virtual
+for_window [class="^com-mathworks-util-PostVMInit$" title="^Figure.*$"] floating enable
+for_window [class="^com-mathworks-activationclient-ActivationApplication$"] floating enable
+for_window [class="^Pcmanfm$"] floating enable
+for_window [class="^Freecad.*$" title="^Formula editor$"] floating enable

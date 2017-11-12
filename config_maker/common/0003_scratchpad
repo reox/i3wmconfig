@@ -1,0 +1,5 @@
+# Scratchpad  from http://christian.amsuess.com/blog/config/changed_to_i3wm/
+bindsym $mod+d [instance="^scratchpad$"] scratchpad show
+exec_always flock -w1 ~/.i3/scratchpad/lockfile ~/.i3/scratchpad/perpetual_terminal.sh
+for_window [instance="^scratchpad$"] move scratchpad, resize set 640 200, sticky enable
+
