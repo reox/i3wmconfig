@@ -1,3 +1,5 @@
+
+# --- Content of common/0000_keys ---
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
@@ -26,18 +28,14 @@ bindsym $mod+Shift+Return exec xterm -class "XTerm floating"
 # start a file manager
 bindsym $mod+p exec pcmanfm
 # start pavucontrol 
-bindsym $mod+m exec pavucontrol 
+bindsym $mod+m exec pavucontrol
 
 # start arandr
 bindsym $mod+n exec arandr
 
-# Scratchpad  from http://christian.amsuess.com/blog/config/changed_to_i3wm/
-bindsym $mod+d [instance="^scratchpad$"] scratchpad show
-exec_always flock -w1 ~/.i3/scratchpad/lockfile ~/.i3/scratchpad/perpetual_terminal.sh
-for_window [instance="^scratchpad$"] move scratchpad, resize set 640 200, sticky enable
-
 # lock the screen
-bindcode 156 exec xautolock -locknow && sleep 1 && xautolock -enable && sleep 1 && xautolock -locknow
+bindsym $mod+ctrl+l exec xautolock -locknow
+bindcode 156 exec xautolock -locknow
 
 # kill focused window
 # use the same as awesome does... some legacy needed
@@ -172,14 +170,49 @@ bindsym $mod+Shift+a exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 # move whole workspace to the next monitor
 bindsym $mod+Tab move workspace to output right
 
+# this will cycle through all outputs
+bindsym $mod+o focus output right
+# --- Content of common/0001_for_window ---
+# enable specific modes for some windows
+for_window [instance="^(keepassx|arandr|wicd-client.py|pavucontrol)$"] floating enable
+for_window [instance="^arandr"] resize set 640 480
+for_window [title="^alsamixer$"] floating enable
+for_window [class="^XTerm floating$"] floating enable
+for_window [title="^Minecraft.*$"] floating enable
+for_window [class="^PTBatcherGUI$"] floating enable
+#
+# gimp: from https://bbs.archlinux.org/viewtopic.php?pid=1037908#p1037908
+assign [class="Gimp"] gimp
+for_window [title="GIMP Startup"] move workspace gimp
+# FIXME this creates huge problems!
+# for_window [window_role="gimp-toolbox"] floating disable, layout stacking, move left, resize shrink right 31px or 31 ppt
+
+for_window [class="Psi"] move workspace 4
+for_window [class="^Darktable$"] move workspace darktable
+for_window [class="^VirtualBox$" title="^Oracle VM VirtualBox Manager$"] floating enable
+for_window [class="^VirtualBox$" title="^.* - Oracle VM VirtualBox$"] move workspace virtual
+for_window [class="^com-mathworks-util-PostVMInit$" title="^Figure.*$"] floating enable
+for_window [class="^com-mathworks-activationclient-ActivationApplication$"] floating enable
+for_window [class="^Pcmanfm$"] floating enable
+for_window [class="^Freecad.*$" title="^Formula editor$"] floating enable
+# --- Content of common/0003_scratchpad ---
+# Scratchpad  from http://christian.amsuess.com/blog/config/changed_to_i3wm/
+bindsym $mod+d [instance="^scratchpad$"] scratchpad show
+exec_always flock -w1 ~/.i3/scratchpad/lockfile ~/.i3/scratchpad/perpetual_terminal.sh
+for_window [instance="^scratchpad$"] move scratchpad, resize set 640 200, sticky enable
+
+# --- Content of host_helios/0000_bars ---
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    status_command i3status
+    tray_output DP-1
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
     font pango:DejaVu Sans Mono 12
     strip_workspace_numbers yes
     status_command i3blocks -c ~/.i3/i3blocks.conf
-    output LVDS-1
-    tray_output LVDS-1
     colors {
         separator #268bd2
         background #002b36
@@ -193,7 +226,6 @@ bar {
 
 bar {
     status_command i3status --config ~/.i3/i3status_top.conf
-    output LVDS-1
     position top
     workspace_buttons no
     tray_output none
@@ -208,52 +240,12 @@ client.focused #6c71c4 #6c71c4 #fdf6e3 #6c71c4
 client.focused_inactive #073642 #073642 #eee8d5 #6c71c4
 client.unfocused #073642 #073642 #93a1a1 #586e75
 client.urgent #d33682 #d33682 #fdf6e3 #dc322f
-
-# multimonitor things
-
-# this will cycle through all outputs
-bindsym $mod+o focus output right
-
-# enable specific modes for some windows
-for_window [instance="^(keepassx|arandr|wicd-client.py|pavucontrol)$"] floating enable
-for_window [instance="^arandr"] resize set 640 480
-for_window [title="^alsamixer$"] floating enable
-for_window [class="^XTerm floating$"] floating enable 
-for_window [title="^Minecraft.*$"] floating enable 
-for_window [class="^PTBatcherGUI$"] floating enable
-for_window [class="^Psi+$"] move container to workspace 4
-for_window [class="^XTerm floating$"] floating enable 
-for_window [title="^Minecraft.*$"] floating enable 
-for_window [class="^com-mathworks-util-PostVMInit$" title="^Figure.*$"] floating enable
-
-# gimp
-# from https://bbs.archlinux.org/viewtopic.php?pid=1037908#p1037908
-assign [class="Gimp"] gimp
-for_window [title="GIMP Startup"] move workspace gimp
-for_window [class="Psi"] move workspace 4
-for_window [class="^Darktable$"] move workspace darktable
-for_window [class="^VirtualBox$" title="^Oracle VM VirtualBox Manager$"] floating enable
-for_window [class="^VirtualBox$" title="^.* - Oracle VM VirtualBox$"] move workspace virtual
-# for_window [window_role="gimp-toolbox"] floating disable, layout stacking, move left, resize shrink right 31px or 31 ppt
-for_window [class="^com-mathworks-util-PostVMInit$" title="^Figure.*$"] floating enable
-for_window [class="^com-mathworks-activationclient-ActivationApplication$"] floating enable
-for_window [class="^Pcmanfm$"] floating enable
-for_window [class="^Freecad.*$" title="^Formula editor$"] floating enable
-#
+# --- Content of host_helios/0001_startup ---
 # start up things
 exec_always --no-startup-id /home/reox/.i3/startup.sh
 
 
 # start wicd-gtk only one time
-# pdf-presenter-console, auto move the presentation to the right output (considering that we start it on the main output)
-for_window [window_role="presentation" class="(?i)pdf-presenter-console"] move container to output right
-# always move the presenter screen to the Laptop Display. This has to be done, otherwise _both_ windows are moved to the other output...
-for_window [window_role="presenter" class="(?i)pdf-presenter-console"] move container to output LVDS-1
-
-# start up things
-exec_always --no-startup-id /home/reox/.i3/startup.sh
-
-exec cmst --minimized
 exec psi-plus
 # start some things on a specific workspace
 exec --no-startup-id i3-msg 'workspace 2, exec firefox, move workspace to output DP-1'
@@ -262,3 +254,4 @@ exec --no-startup-id i3-msg 'workspace 3, exec urxvt -e mutt, move workspace to 
 # set background color
 exec --no-startup-id xsetroot -solid "#333333"
 exec --no-startup-id nitrogen --restore
+
