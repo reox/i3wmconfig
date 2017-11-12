@@ -37,8 +37,7 @@ exec_always flock -w1 ~/.i3/scratchpad/lockfile ~/.i3/scratchpad/perpetual_termi
 for_window [instance="^scratchpad$"] move scratchpad, resize set 640 200, sticky enable
 
 # lock the screen
-bindsym $mod+ctrl+l exec xautolock -locknow
-bindcode 156 exec xautolock -locknow
+bindcode 156 exec xautolock -locknow && sleep 1 && xautolock -enable && sleep 1 && xautolock -locknow
 
 # kill focused window
 # use the same as awesome does... some legacy needed
@@ -176,13 +175,39 @@ bindsym $mod+Tab move workspace to output right
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    status_command i3status
-    tray_output DP-1
-# output DP-1
     font pango:DejaVu Sans Mono 12
     strip_workspace_numbers yes
-    separator_symbol "  |  "
+    status_command i3blocks -c ~/.i3/i3blocks.conf
+    output LVDS-1
+    tray_output LVDS-1
+    colors {
+        separator #268bd2
+        background #002b36
+        statusline #839496
+        focused_workspace #fdf6e3 #6c71c4 #fdf6e3
+        active_workspace #fdf6e3 #6c71c4 #fdf6e3
+        inactive_workspace #002b36 #586e75 #002b36
+        urgent_workspace #d33682 #d33682 #fdf6e3
+    }
 }
+
+bar {
+    status_command i3status --config ~/.i3/i3status_top.conf
+    output LVDS-1
+    position top
+    workspace_buttons no
+    tray_output none
+    separator_symbol " | "
+    colors {
+        background #444444
+        statusline #ffffff
+    }
+}
+
+client.focused #6c71c4 #6c71c4 #fdf6e3 #6c71c4
+client.focused_inactive #073642 #073642 #eee8d5 #6c71c4
+client.unfocused #073642 #073642 #93a1a1 #586e75
+client.urgent #d33682 #d33682 #fdf6e3 #dc322f
 
 # multimonitor things
 
@@ -196,14 +221,14 @@ for_window [title="^alsamixer$"] floating enable
 for_window [class="^XTerm floating$"] floating enable 
 for_window [title="^Minecraft.*$"] floating enable 
 for_window [class="^PTBatcherGUI$"] floating enable
-
-# Restore Layouts, must be done before the application starts
-# exec --no-startup-id "i3-msg 'workspace 4; append_layout /home/reox/.i3/layouts/workspace-4.json'"
+for_window [class="^Psi+$"] move container to workspace 4
+for_window [class="^XTerm floating$"] floating enable 
+for_window [title="^Minecraft.*$"] floating enable 
+for_window [class="^com-mathworks-util-PostVMInit$" title="^Figure.*$"] floating enable
 
 # gimp
 # from https://bbs.archlinux.org/viewtopic.php?pid=1037908#p1037908
 assign [class="Gimp"] gimp
-bindsym $mod+g workspace gimp
 for_window [title="GIMP Startup"] move workspace gimp
 for_window [class="Psi"] move workspace 4
 for_window [class="^Darktable$"] move workspace darktable
@@ -220,6 +245,15 @@ exec_always --no-startup-id /home/reox/.i3/startup.sh
 
 
 # start wicd-gtk only one time
+# pdf-presenter-console, auto move the presentation to the right output (considering that we start it on the main output)
+for_window [window_role="presentation" class="(?i)pdf-presenter-console"] move container to output right
+# always move the presenter screen to the Laptop Display. This has to be done, otherwise _both_ windows are moved to the other output...
+for_window [window_role="presenter" class="(?i)pdf-presenter-console"] move container to output LVDS-1
+
+# start up things
+exec_always --no-startup-id /home/reox/.i3/startup.sh
+
+exec cmst --minimized
 exec psi-plus
 # start some things on a specific workspace
 exec --no-startup-id i3-msg 'workspace 2, exec firefox, move workspace to output DP-1'
