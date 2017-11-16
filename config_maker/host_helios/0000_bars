@@ -24,6 +24,8 @@ set $base0F #b15928
 bar {
     status_command i3blocks -c ~/.i3/i3blocks.conf
 
+    font pango:Droid Sans Mono 14
+
     colors {
         background $base00
         separator  $base01
