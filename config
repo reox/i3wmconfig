@@ -122,31 +122,44 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+c focus child
 
+# Workspace names
+# The spaces are intentional.
+set $WS1 1:    
+set $WS2 2:    
+set $WS3 3:    
+set $WS4 4:    
+set $WS5 5:5
+set $WS6 6:6
+set $WS7 7:7
+set $WS8 8:8
+set $WS9 9:9
+set $WS10 10:10
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $WS1
+bindsym $mod+2 workspace $WS2
+bindsym $mod+3 workspace $WS3
+bindsym $mod+4 workspace $WS4
+bindsym $mod+5 workspace $WS5
+bindsym $mod+6 workspace $WS6
+bindsym $mod+7 workspace $WS7
+bindsym $mod+8 workspace $WS8
+bindsym $mod+9 workspace $WS9
+bindsym $mod+0 workspace $WS10
 
 bindsym $mod+F2 workspace gimp
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace $WS1
+bindsym $mod+Shift+2 move container to workspace $WS2
+bindsym $mod+Shift+3 move container to workspace $WS3
+bindsym $mod+Shift+4 move container to workspace $WS4
+bindsym $mod+Shift+5 move container to workspace $WS5
+bindsym $mod+Shift+6 move container to workspace $WS6
+bindsym $mod+Shift+7 move container to workspace $WS7
+bindsym $mod+Shift+8 move container to workspace $WS8
+bindsym $mod+Shift+9 move container to workspace $WS9
+bindsym $mod+Shift+0 move container to workspace $WS10
 
 # reload the configuration file
 bindsym $mod+Shift+t reload
@@ -195,9 +208,8 @@ bindsym $mod+Tab move workspace to output right
 # finds out, if available)
 bar {
     status_command i3blocks -c ~/.i3/i3blocks.conf
-        font pango:Droid Sans Mono 10
-#    output LVDS-1
-#    tray_output LVDS-1
+    font pango:Droid Sans Mono, FontAwesome 10
+    strip_workspace_numbers yes
     colors {
         background $base00
         separator  $base01
@@ -214,8 +226,8 @@ bar {
 
 bar {
     status_command i3blocks -c ~/.i3/i3blocks_top.conf
-#output LVDS-1
     position top
+    font pango:Droid Sans Mono, FontAwesome 10
     workspace_buttons no
     tray_output none
     colors {
@@ -250,7 +262,7 @@ bindsym $mod+o focus output right
 for_window [instance="^(keepassx|arandr|wicd-client.py)$"] floating enable
 for_window [instance="^arandr"] resize set 640 480
 for_window [title="^alsamixer$"] floating enable
-for_window [class="^Psi+$"] move container to workspace 4
+for_window [class="^Psi+$"] move container to workspace $WS4
 for_window [class="^XTerm floating$"] floating enable 
 for_window [title="^Minecraft.*$"] floating enable 
 for_window [class="^com-mathworks-util-PostVMInit$" title="^Figure.*$"] floating enable
@@ -274,8 +286,8 @@ exec volti
 exec qtpass
 exec psi-plus
 # start some things on a specific workspace
-exec --no-startup-id i3-msg 'workspace 2; exec firefox; workspace 1'
-exec --no-startup-id i3-msg 'workspace 3; exec urxvt -e mutt; workspace 1'
+exec --no-startup-id i3-msg 'workspace $WS2; exec firefox; workspace $WS1'
+exec --no-startup-id i3-msg 'workspace $WS3; exec urxvt -e mutt; workspace $WS1'
 
 # set background color
 exec --no-startup-id xsetroot -solid "#333333"
