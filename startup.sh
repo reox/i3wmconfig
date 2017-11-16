@@ -3,7 +3,7 @@
 # disable dmps and bell
 xset -dpms &
 xset s off &
-xset -b & 
+xset -b &
 
 # screenlocker
 xautolock -detectsleep -time 3 -locker "i3lock -i ~/.i3/lockscreen.png -f" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'" &
@@ -21,6 +21,4 @@ setxkbmap us altgr-intl -option ctrl:nocaps
 # run a few things on startup
 wmname LG3D &
 
-xsetroot -solid "#111111"
-nitrogen --restore &
 gpg-agent --daemon --write-env-file "${HOME}/.gpg-agent-info"
