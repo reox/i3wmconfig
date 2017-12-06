@@ -20,3 +20,5 @@ for_window [class="^com-mathworks-util-PostVMInit$" title="^Figure.*$"] floating
 for_window [class="^com-mathworks-activationclient-ActivationApplication$"] floating enable
 for_window [class="^Pcmanfm$"] floating enable
 for_window [class="^Freecad.*$" title="^Formula editor$"] floating enable
+
+for_window [class="org.jabref.JabRefMain" instance="org.jabref.JabRefMain" title="Change of Grouping Method"] floating enable, sticky enable
