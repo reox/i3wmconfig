@@ -220,7 +220,7 @@ bar {
         active_workspace    $base05 $base03 $base00
         inactive_workspace  $base03 $base01 $base05
         urgent_workspace    $base08 $base08 $base00
-        binding_mode $base00 $base0A $base00
+        binding_mode        $base00 $base0A $base00
     }
 }
 
@@ -278,6 +278,8 @@ for_window [window_role="gimp-toolbox"] floating disable, layout stacking, move 
 for_window [window_role="presentation" class="(?i)pdf-presenter-console"] move container to output right
 # always move the presenter screen to the Laptop Display. This has to be done, otherwise _both_ windows are moved to the other output...
 for_window [window_role="presenter" class="(?i)pdf-presenter-console"] move container to output LVDS-1
+
+for_window [class="Vmg" instance="vmg" title="Magnifying Glass"] floating enable
 
 # start up things
 exec_always --no-startup-id /home/reox/.i3/startup.sh
