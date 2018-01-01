@@ -49,7 +49,7 @@ bindsym $mod+Shift+Return exec xterm -class "XTerm floating"
 # start a file manager
 bindsym $mod+p exec pcmanfm
 # start alsamixer
-bindsym $mod+m exec urxvt -e alsamixer
+bindsym $mod+m exec pavucontrol
 
 # start arandr
 bindsym $mod+n exec arandr
@@ -61,7 +61,7 @@ for_window [instance="^scratchpad$"] move scratchpad
 for_window [instance="^scratchpad$"] resize set 640 200
 
 # lock the screen
-bindcode 156 exec xautolock -locknow && sleep 1 && xautolock -enable && sleep 1 && xautolock -locknow
+bindcode 156 exec i3lock -c 000000
 
 # kill focused window
 # use the same as awesome does... some legacy needed
@@ -281,10 +281,14 @@ for_window [window_role="presenter" class="(?i)pdf-presenter-console"] move cont
 
 for_window [class="Vmg" instance="vmg" title="Magnifying Glass"] floating enable
 
+for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
+
+
 # start up things
 exec_always --no-startup-id /home/reox/.i3/startup.sh
 
 exec cmst --minimized
+exec blueman
 exec psi-plus
 # start some things on a specific workspace
 exec --no-startup-id i3-msg 'workspace $WS2; exec firefox; workspace $WS1'
