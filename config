@@ -290,6 +290,7 @@ exec_always --no-startup-id /home/reox/.i3/startup.sh
 exec cmst --minimized
 exec blueman-applet
 exec psi-plus
+exec volti
 # start some things on a specific workspace
 exec --no-startup-id i3-msg 'workspace $WS2; exec firefox; workspace $WS1'
 exec --no-startup-id i3-msg 'workspace $WS3; exec urxvt -e mutt; workspace $WS1'
