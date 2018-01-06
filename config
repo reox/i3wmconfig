@@ -263,9 +263,8 @@ bindsym $mod+o focus output right
 for_window [instance="^(keepassx|arandr|wicd-client.py)$"] floating enable
 for_window [instance="^arandr"] resize set 640 480
 for_window [title="^alsamixer$"] floating enable
-for_window [class="^Psi\+$"] move container to workspace $WS4
-for_window [class="^XTerm floating$"] floating enable 
-for_window [title="^Minecraft.*$"] floating enable 
+for_window [class="^XTerm floating$"] floating enable
+for_window [title="^Minecraft.*$"] floating enable
 for_window [class="^com-mathworks-util-PostVMInit$" title="^Figure.*$"] floating enable
 
 # gimp
@@ -283,6 +282,9 @@ for_window [class="Vmg" instance="vmg" title="Magnifying Glass"] floating enable
 
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 
+assign [window_role="browser"] $WS2
+assign [title="^mutt$"] $WS3
+assign [class="^Psi\+$"] $WS4
 
 # start up things
 exec_always --no-startup-id /home/reox/.i3/startup.sh
@@ -292,8 +294,8 @@ exec blueman-applet
 exec psi-plus
 exec volti
 # start some things on a specific workspace
-exec --no-startup-id i3-msg 'workspace $WS2; exec firefox; workspace $WS1'
-exec --no-startup-id i3-msg 'workspace $WS3; exec urxvt -e mutt; workspace $WS1'
+exec --no-startup-id chromium
+exec --no-startup-id urxvt -e mutt
 
 # set background color
 exec --no-startup-id xsetroot -solid "#333333"
