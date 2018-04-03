@@ -271,7 +271,7 @@ for_window [class="^com-mathworks-util-PostVMInit$" title="^Figure.*$"] floating
 # from https://bbs.archlinux.org/viewtopic.php?pid=1037908#p1037908
 assign [class="Gimp"] gimp
 for_window [title="GIMP Startup"] move workspace gimp
-for_window [window_role="gimp-toolbox"] floating disable, layout stacking, move right, resize shrink left 31px or 30ppt
+for_window [window_role="^gimp-toolbox$"] floating disable, layout stacking, move right, resize shrink left 31px or 30ppt
 
 # pdf-presenter-console, auto move the presentation to the right output (considering that we start it on the main output)
 for_window [window_role="presentation" class="(?i)pdf-presenter-console"] move container to output right

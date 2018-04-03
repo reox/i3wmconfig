@@ -1,5 +1,7 @@
 #!/bin/bash
-if [ -f /var/run/user/1000/bup-backup.pid ]; then
+( flock -n 9 ) 9>/var/run/user/1000/borg-backup.pid
+
+if [ $? -eq 1 ]; then
     # f085
     echo ""
     echo ""
