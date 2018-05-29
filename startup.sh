@@ -10,6 +10,3 @@ setxkbmap us altgr-intl -option ctrl:nocaps
 
 # run a few things on startup
 wmname LG3D &
-
-gpg-agent --daemon --write-env-file "${HOME}/.gpg-agent-info" &
-
