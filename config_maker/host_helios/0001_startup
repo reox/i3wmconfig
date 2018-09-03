@@ -6,7 +6,7 @@ exec_always --no-startup-id /home/reox/.i3/startup.sh
 exec psi-plus
 # start some things on a specific workspace
 exec --no-startup-id i3-msg 'workspace 2, exec firefox, move workspace to output DP-1'
-exec --no-startup-id i3-msg 'workspace 3, exec urxvt -e mutt, move workspace to output DP-1'
+exec --no-startup-id i3-msg 'workspace 3, exec x-terminal-emulator -e mutt, move workspace to output DP-1'
 
 # set background color
 exec --no-startup-id xsetroot -solid "#333333"
