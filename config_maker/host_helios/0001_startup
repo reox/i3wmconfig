@@ -1,9 +1,10 @@
 # start up things
-exec_always --no-startup-id /home/reox/.i3/startup.sh
+exec_always --no-startup-id /home/reox/.config/i3/startup.sh
 
 
 # start wicd-gtk only one time
 exec psi-plus
+exec conky
 # start some things on a specific workspace
 exec --no-startup-id i3-msg 'workspace 2, exec firefox, move workspace to output DP-1'
 exec --no-startup-id i3-msg 'workspace 3, exec x-terminal-emulator -e mutt, move workspace to output DP-1'

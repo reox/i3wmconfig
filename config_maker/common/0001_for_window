@@ -26,3 +26,5 @@ assign [title="GIMP Startup"] gimp
 # for_window [window_role="gimp-toolbox"] floating disable, layout stacking, move left, resize shrink right 31px or 31 ppt
 assign [class="^Darktable$"] darktable
 assign [class="^Psi\+$"] 4
+
+assign [class="^conky$"] floating enable, sticky enable
