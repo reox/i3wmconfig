@@ -3,7 +3,8 @@ for_window [instance="^(keepassx|arandr|wicd-client.py|pavucontrol)$"] floating 
 for_window [instance="^arandr"] resize set 640 480
 for_window [title="^alsamixer$"] floating enable
 for_window [class="^XTerm floating$"] floating enable
-for_window [title="^Minecraft.*$"] floating enable
+for_window [class="^net-minecraft.*$"] floating enable
+for_window [class="^Minecraft.*$"] floating enable
 for_window [class="^PTBatcherGUI$"] floating enable
 
 for_window [class="^com-mathworks-util-PostVMInit$" title="^Figure.*$"] floating enable
