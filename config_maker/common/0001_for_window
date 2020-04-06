@@ -40,3 +40,7 @@ for_window [class="Blueman-manager" instance="blueman-manager"] floating enable
 for_window [class="rdesktop" instance="rdesktop" title="Lisa"] floating enable
 
 for_window [class="mpv" instance="gl"] floating enable
+
+
+# Float matplotlib windows
+for_window [class="Matplotlib" instance="matplotlib"] floating enable
