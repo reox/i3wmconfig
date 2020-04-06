@@ -20,8 +20,9 @@ font pango:Droid Sans Mono 8
 floating_modifier $mod
 
 # start a terminal
+# Set this to terminology: sudo update-alternatives --config x-terminal-emulator
 bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Shift+Return exec xterm -class "XTerm floating" 
+bindsym $mod+Shift+Return exec i3-sensible-terminal --name "quickfloaterm"
 
 # start a file manager
 bindsym $mod+p exec thunar
@@ -170,3 +171,7 @@ bindsym $mod+Tab move workspace to output right
 
 # this will cycle through all outputs
 bindsym $mod+o focus output right
+
+# https://www.reddit.com/r/i3wm/comments/4akyk5/how_do_you_save_a_screenshot_to_a_file_using/d11rfus/
+bindsym Print --release exec "scrot -s /tmp/screenshot-$(date +%Y%m%d_%H%M%s).png -e 'xclip -selection c -t image/png < $f'"
+bindsym Shift+Print exec "scrot -s -e 'xclip -selection c -t image/png < $f'"
