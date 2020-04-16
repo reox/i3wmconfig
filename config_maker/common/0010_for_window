@@ -26,7 +26,8 @@ assign [title="GIMP Startup"] gimp
 # FIXME this creates huge problems!
 # for_window [window_role="gimp-toolbox"] floating disable, layout stacking, move left, resize shrink right 31px or 31 ppt
 assign [class="^Darktable$"] darktable
-assign [class="^Psi\+$"] 4
+assign [class="^Psi\+$"] $ws4
+assign [class="^Skype\+$"] $ws4
 
 assign [class="^conky$"] floating enable, sticky enable
 
@@ -44,3 +45,10 @@ for_window [class="mpv" instance="gl"] floating enable
 
 # Float matplotlib windows
 for_window [class="Matplotlib" instance="matplotlib"] floating enable
+
+
+# vokoscreenNG:
+# problem, other windows to not really have a sane instance :/
+for_window [class="^vokoscreenNG$"] floating enable
+
+

@@ -26,6 +26,8 @@ bar {
 
     font pango:Droid Sans Mono, FontAwesome 14
 
+    strip_workspace_numbers yes
+
     colors {
         background $base00
         separator  $base01

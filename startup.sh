@@ -10,4 +10,4 @@ xset -b &
 # Should be set by /etc/default/keyboard
 
 # run a few things on startup
-wmname LG3D &
+#wmname LG3D &

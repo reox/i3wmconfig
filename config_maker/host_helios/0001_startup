@@ -9,8 +9,8 @@ exec blueman-applet
 exec nextcloud
 exec skypeforlinux
 # start some things on a specific workspace
-exec --no-startup-id i3-msg 'workspace 2, exec firefox, move workspace to output DP-1'
-exec --no-startup-id i3-msg 'workspace 3, exec x-terminal-emulator -e neomutt, move workspace to output DP-1'
+exec --no-startup-id i3-msg 'workspace $ws2, exec firefox, move workspace to output DP-1'
+exec --no-startup-id i3-msg 'workspace $ws3, exec x-terminal-emulator -e neomutt, move workspace to output DP-1'
 
 # set background color
 exec --no-startup-id xsetroot -solid "#333333"
