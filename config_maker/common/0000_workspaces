@@ -1,8 +1,14 @@
 # Use variables in order to rename the workspaces
-set $ws1 1
-set $ws2 2
-set $ws3 3
-set $ws4 4
+#
+# Use `set $ws1 1:text` to allow for correct ordering
+# use `$ gucharmap` to look up icons. We have loaded FontAwesome, so all icons
+# from there should work. Especially icons starting at U+F000
+#
+#
+set $ws1 1:
+set $ws2 2:
+set $ws3 3:
+set $ws4 4:
 set $ws5 5
 set $ws6 6
 set $ws7 7
